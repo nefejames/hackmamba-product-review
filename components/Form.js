@@ -16,7 +16,6 @@ export default function Form({ closeModal }) {
         },
         (error, result) => {
           if (!error && result && result.event === "success") {
-            console.log("Done! Here is the image info: ", result.info);
             setUploadedImgUrl(result.info.thumbnail_url);
           }
 
