@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Heading } from "@chakra-ui/react";
-import ReviewContainer from "@components/ReviewContainer";
+import ReviewsContainer from "@components/ReviewsContainer";
 import ProductCard from "@components/ProductCard";
 import FormModal from "@components/FormModal";
 
@@ -18,7 +18,7 @@ export default function Home() {
       <ProductCard />
       <FormModal />
 
-      <ReviewContainer />
+      <ReviewsContainer />
     </div>
   );
 }

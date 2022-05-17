@@ -2,7 +2,7 @@ import { Box, VStack, Text } from "@chakra-ui/react";
 import Review from "@components/Review";
 import { useReviewsContext } from "context/ReviewsContext";
 
-export default function ReviewContainer() {
+export default function ReviewsContainer() {
   const { reviews } = useReviewsContext();
 
   return (
