@@ -3,11 +3,6 @@ import { Heading } from "@chakra-ui/react";
 import ReviewContainer from "@components/ReviewContainer";
 import ProductCard from "@components/ProductCard";
 import FormModal from "@components/FormModal";
-import dynamic from "next/dynamic";
-
-const DynamicFormModal = dynamic(() => import("@components/FormModal"), {
-  ssr: false,
-});
 
 export default function Home() {
   return (
@@ -21,7 +16,7 @@ export default function Home() {
       </Heading>
 
       <ProductCard />
-      <DynamicFormModal />
+      <FormModal />
 
       <ReviewContainer />
     </div>

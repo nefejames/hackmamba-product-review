@@ -9,9 +9,7 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
-
-const DynamicForm = dynamic(() => import("./Form"), { ssr: false });
+import Form from "./Form";
 
 export default function FormModal() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,7 +23,7 @@ export default function FormModal() {
           <ModalHeader>Review Product</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <DynamicForm closeModal={onClose} />
+            <Form closeModal={onClose} />
           </ModalBody>
         </ModalContent>
       </Modal>

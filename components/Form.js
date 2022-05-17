@@ -1,35 +1,42 @@
 import { FormControl, Input, Stack, Text, Button } from "@chakra-ui/react";
-import { useReviewsContext } from "context/ReviewsContext";
 import { useForm } from "react-hook-form";
+import { useReviewsContext } from "context/ReviewsContext";
+import { useImageUploadContext } from "@context/ImageUploadContext";
 
 export default function Form({ closeModal }) {
   const { reviews, setReviews } = useReviewsContext();
+  const { uploadedImgUrl, setUploadedImgUrl } = useImageUploadContext();
 
   function showWidget() {
-    if (typeof window !== "undefined") {
-      window.cloudinary.createUploadWidget(
+    window.cloudinary
+      .createUploadWidget(
         {
           cloudName: "nefejames",
-          uploadPreset: "preset",
+          uploadPreset: "ml_default",
         },
         (error, result) => {
           if (!error && result && result.event === "success") {
             console.log("Done! Here is the image info: ", result.info);
+            setUploadedImgUrl(result.info.thumbnail_url);
           }
 
           if (error) {
             console.log(error);
           }
         }
-      );
-    }
+      )
+      .open();
   }
 
   const { handleSubmit, register } = useForm();
 
   function onSubmit(value) {
     console.log(value);
-    setReviews([...reviews, value.review]);
+
+    setReviews([
+      ...reviews,
+      { reviewText: value.reviewText, reviewImage: uploadedImgUrl },
+    ]);
     closeModal();
   }
 
@@ -39,7 +46,7 @@ export default function Form({ closeModal }) {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl>
-          <Input type="text" {...register("review")} />
+          <Input type="text" {...register("reviewText")} />
           <Button onClick={showWidget}>upload image</Button>
         </FormControl>
 
