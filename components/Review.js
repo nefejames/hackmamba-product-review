@@ -1,6 +1,6 @@
 import { Box, Text, Image } from "@chakra-ui/react";
 
-export default function Comment({ review }) {
+export default function Review({ review }) {
   return (
     <Box
       display="flex"
