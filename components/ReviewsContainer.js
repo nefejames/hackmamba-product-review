@@ -1,4 +1,4 @@
-import { Box, VStack, Text } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import Review from "@components/Review";
 import { useReviewsContext } from "context/ReviewsContext";
 
